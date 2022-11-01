@@ -31,18 +31,9 @@ form.addEventListener('submit', function (e) {
 
 	//SAVE TO LOCAL STORAGE:
 	// savedTodos.push({ task: newTodo.innerText, isCompleted: false });
-	localStorage.setItem('todos', JSON.stringify(taskValue));
-	console.log(localStorage.getItem('todos'));
+	localStorage.setItem('todos', JSON.stringify(todoList));
+	console.log(localStorage.getItem(todoList));
 });
 
 //RETRIEVING FROM LOCAL STORAGE:
-// const savedTodos = JSON.parse(localStorage.getItem('todos')) || [];
-// for (let i = 0; i < savedTodos.length; i++) {
-// 	let newTodo = document.createElement('li');
-// 	newTodo.innerText = savedTodos[i].task;
-// 		newTodo.isCompleted = savedTodos[i].isCompleted ? true : false;
-// 		if (newTodo.isCompleted) {
-// 			newTodo.style.textDecoration = 'line-through';
-// 		}
-// 	todoList.appendChild(newTodo);
-// }
+JSON.parse(localStorage.getItem('todos'));
