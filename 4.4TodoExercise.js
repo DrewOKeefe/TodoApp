@@ -3,14 +3,6 @@ const form = document.querySelector('#add-todo');
 const input = document.querySelector('#task');
 const todoList = document.querySelector('#todoList');
 
-//STYLING COMPLETED ITEMS
-todoList.addEventListener('click', function (e) {
-	if (e.target.tagName === 'LI') {
-		e.target.classList.toggle('completed');
-	}
-	localStorage.setItem('savedTodos', JSON.stringify(todoList.innerHTML));
-});
-
 //CREATING NEW LI WITH BUTTONS:
 form.addEventListener('submit', function (e) {
 	e.preventDefault();
@@ -27,14 +19,26 @@ form.addEventListener('submit', function (e) {
 		let deleteBtn = document.createElement('button');
 		deleteBtn.innerText = 'Delete';
 		newTodo.appendChild(deleteBtn);
-		deleteBtn.addEventListener('click', function (e) {
-			// console.log('hello');
-			e.target.parentElement.remove();
-		});
 	} else alert('Please enter task');
 });
 
-// SAVED TO LOCAL STORAGE:
+// STYLING COMPLETED ITEMS
+todoList.addEventListener('click', function (e) {
+	if (e.target.tagName === 'LI') {
+		e.target.classList.toggle('completed');
+	}
+	localStorage.setItem('savedTodos', JSON.stringify(todoList.innerHTML));
+});
+
+// ADDING REMOVE FUNCTION TO DELETE BUTTON:
+todoList.addEventListener('click', function (e) {
+	if (e.target.tagName === 'BUTTON') {
+		// console.log("loaded hello")
+		e.target.parentElement.remove();
+	}
+});
+
+// SAVE TO LOCAL STORAGE:
 document.addEventListener('click', function () {
 	localStorage.setItem('savedTodos', JSON.stringify(todoList.innerHTML));
 });
@@ -43,12 +47,5 @@ document.addEventListener('submit', function () {
 	localStorage.setItem('savedTodos', JSON.stringify(todoList.innerHTML));
 });
 
-//RETRIEVING FROM LOCAL STORAGE:
+//RETRIEVE FROM LOCAL STORAGE:
 todoList.innerHTML = JSON.parse(localStorage.savedTodos);
-
-todoList.addEventListener('click', function (e) {
-	if (e.target.tagName === 'BUTTON') {
-		// console.log("loaded hello")
-		e.target.parentElement.remove();
-	}
-});
