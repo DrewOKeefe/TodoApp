@@ -30,7 +30,6 @@ form.addEventListener('submit', function (e) {
 	});
 
 	//SAVE TO LOCAL STORAGE:
-	// savedTodos.push({ task: newTodo.innerText, isCompleted: false });
 	localStorage.setItem('todos', JSON.stringify(todoList));
 	console.log(localStorage.getItem(todoList));
 });
