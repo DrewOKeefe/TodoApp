@@ -14,6 +14,7 @@ todoList.addEventListener('click', function (e) {
 form.addEventListener('submit', function (e) {
 	e.preventDefault();
 
+	if (input.value) {
 	//NEW LI:
 	let newTodo = document.createElement('li');
 	let taskValue = document.getElementById('task').value;
@@ -21,17 +22,20 @@ form.addEventListener('submit', function (e) {
 	input.value = '';
 	todoList.appendChild(newTodo);
 
-	//NEW DELETE BUTTON:
-	let deleteBtn = document.createElement('button');
-	deleteBtn.innerText = 'Delete';
-	newTodo.appendChild(deleteBtn);
-	deleteBtn.addEventListener('click', function (e) {
-		e.target.parentElement.remove();
-	});
+		//NEW DELETE BUTTON:
+		let deleteBtn = document.createElement('button');
+		deleteBtn.innerText = 'Delete';
+		newTodo.appendChild(deleteBtn);
+		deleteBtn.addEventListener('click', function (e) {
+			// console.log("asdfsd")
+			e.target.parentElement.remove();
+		});
+	} else alert('Please enter task');
 
 	//SAVE TO LOCAL STORAGE:
-	localStorage.setItem('todos', JSON.stringify(todoList));
-	console.log(localStorage.getItem(todoList));
+	console.log(todoList.innerHTML);
+	console.log(JSON.stringify(todoList.innerHTML));
+	localStorage.setItem('savedTodos', todoList.innerHTML);
 });
 
 //RETRIEVING FROM LOCAL STORAGE:
