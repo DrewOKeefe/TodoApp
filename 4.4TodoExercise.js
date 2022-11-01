@@ -1,5 +1,5 @@
 //CREATING TODO LIST:
-const form = document.querySelector('#add-todo');
+const form = document.querySelector('form');
 const input = document.querySelector('#task');
 const todoList = document.querySelector('#todoList');
 
@@ -34,12 +34,12 @@ form.addEventListener('submit', function (e) {
 	todoList.appendChild(newTodo);
 
 	//NEW DELETE BUTTON:
-	// let deleteBtn = document.createElement('button');
-	// deleteBtn.innerText = 'Delete';
-	// newTodo.appendChild(deleteBtn);
-	// deleteBtn.addEventListener('click', function (e) {
-	// 	e.target.parentElement.remove();
-	// });
+	let deleteBtn = document.createElement('button');
+	deleteBtn.innerText = 'Delete';
+	newTodo.appendChild(deleteBtn);
+	deleteBtn.addEventListener('click', function (e) {
+		e.target.parentElement.remove();
+	});
 
 	//SAVE TO LOCAL STORAGE:
 	const savedTodos = todoList.innerText;
@@ -48,9 +48,8 @@ form.addEventListener('submit', function (e) {
 	// console.log(localStorage.getItem(savedTodos));
 });
 
-
-// const list = document.querySelector("#list");
-// const textInput = document.querySelector("#listIn");
+// const list = document.querySelector('#todoList');
+// const textInput = document.querySelector("#task");
 // const form = document.querySelector("form");
 // form.addEventListener("submit", function(e) {
 // 	e.preventDefault();
