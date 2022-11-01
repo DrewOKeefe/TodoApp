@@ -8,29 +8,29 @@ todoList.addEventListener('click', function (e) {
 	if (e.target.tagName === 'LI') {
 		e.target.classList.toggle('completed');
 	}
+	// SAVE STYLING TO LOCAL STORAGE:
+	localStorage.setItem('savedTodos', todoList.innerHTML);
 });
 
 //CREATING NEW LI WITH BUTTONS:
 form.addEventListener('submit', function (e) {
 	e.preventDefault();
 
-	//NEW LI:
-	if(input.value) {
+	if (input.value) {
+		//NEW LI:
 		let newTodo = document.createElement('li');
-		let taskValue = document.getElementById('task').value;
-		newTodo.innerText = taskValue;
+		newTodo.innerText = input.value;
 		input.value = '';
 		todoList.appendChild(newTodo);
-	
-	
-	//NEW DELETE BUTTON:
-	let deleteBtn = document.createElement('button');
-	deleteBtn.innerText = 'Delete';
-	newTodo.appendChild(deleteBtn);
-	deleteBtn.addEventListener('click', function (e) {
-		e.target.parentElement.remove();
-	});
-} else alert("Please enter task");
+
+		//NEW DELETE BUTTON:
+		let deleteBtn = document.createElement('button');
+		deleteBtn.innerText = 'Delete';
+		newTodo.appendChild(deleteBtn);
+		deleteBtn.addEventListener('click', function (e) {
+			e.target.parentElement.remove();
+		});
+	} else alert('Please enter task');
 
 	//SAVE TO LOCAL STORAGE:
 	localStorage.setItem('savedTodos', todoList.innerHTML);
@@ -39,6 +39,7 @@ form.addEventListener('submit', function (e) {
 //RETRIEVING FROM LOCAL STORAGE:
 todoList.innerHTML = localStorage.getItem('savedTodos');
 
+// ALANS CODE:
 // const list = document.querySelector("#list");
 // const textInput = document.querySelector("#listIn");
 // const form = document.querySelector("form");
